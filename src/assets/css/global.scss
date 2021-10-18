@@ -1,0 +1,119 @@
+/*变量存储*/
+
+$color-text: #666;
+$color-high-text: #ff5777;
+$color-tint: #ff8198;
+$color-background: #fff;
+$font-size: 14px;
+$line-height: 1.5;
+
+// 媒体查询
+$media-stack:
+(group: tablet, id: general, rule: "only screen and (max-width: 768px)"),
+(group: desktop, id: general, rule: "only screen and(min-width: 769px) and (max-width: 1023px)"),
+(group: smaller, id: general, rule: "only screen and(min-width: 1024px) and (max-width: 1169px)"),
+(group: large, id: general, rule: "only screen and (min-width: 1170px)"),
+(group: print, id: general, rule: "only print");
+
+@mixin media($group, $id: general){  //引用：@include media(tablet){具体样式}
+@each $media in $media-stack{
+  @if($group == map-get($media, group) and $id == map-get($media, id)){
+      $rule: map-get($media, rule);
+      @media #{$rule} {@content}
+    }
+  }
+}
+
+;// flex布局
+@mixin flex-box{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flex;
+  display: flex;
+}
+@mixin flex-1($percent){
+  width:$percent;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+@mixin justify-content{
+  -webkit-justify-content:space-between;
+  justify-content:space-between;
+}
+
+//关于动画
+@mixin transition($transition) {
+  -moz-transition: $transition;
+  -webkit-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+@mixin transform-origin($origin) {
+    -moz-transform-origin:$origin;
+    -webkit-transform-origin:$origin;
+    -ms-transform-origin:$origin;
+    -o-transform-origin:$origin;
+    transform-origin:$origin;
+}
+@mixin scale($scale) {
+    -moz-transform:scale($scale);
+    -webkit-transform:scale($scale);
+    -ms-transform:scale($scale);
+    -o-transform:scale($scale);
+    transform:scale($scale);
+}
+
+//透明度
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: alpha(opacity=$opacity * 100);//兼容IE
+}
+
+//超出一行文本省略
+@mixin overflow() {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+//多行超出文本省略
+@mixin overflow-more($num) {
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:$num;
+  display: -moz-box;
+  -moz-line-clamp: $num !important;
+  -moz-box-orient: vertical;
+  overflow: hidden;
+}
+
+// 圆角
+@mixin border-radius($radius) {
+  -webkit-border-radius:$radius;
+  -moz-border-radius:$radius;
+  -o-border-radius:$radius;
+  border-radius:$radius;
+}
+
+// 设置阴影
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow:$shadow;
+  -moz-box-shadow:$shadow;
+  -o-box-shadow:$shadow;
+  box-shadow:$shadow;
+}
+
+// 绝对居中
+@mixin center($width, $height) {
+  position: absolute;
+  left:50%;
+  top:50%;
+  width:$width;
+  height:$height;
+  margin:(-$height / 2) 0 0 (-$width / 2);
+}
