@@ -11,14 +11,15 @@ import MainTabBar from 'components/content/MainTabBar.vue'
 export default {
   name: 'App',
   components: {
-    MainTabBar,
-  },
-}
+    MainTabBar
+  }
+};
 </script>
 
 <style lang="scss">
 @import './assets/css/base.css';
+
 #app {
-  color: color-tint;
+  padding-bottom: 49px;
 }
 </style>

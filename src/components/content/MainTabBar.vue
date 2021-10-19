@@ -36,14 +36,14 @@
 </template>
 
 <script>
-import TabBar from 'components/common/tabbar/tabbar.vue'
+import TabBar from 'components/common/tabbar/TabBar.vue'
 import TabBarItem from 'components/common/tabbar/TabBarItem.vue'
 
 export default {
   name: 'TabbarMaintabbar',
   components: {
     TabBar,
-    TabBarItem,
+    TabBarItem
   },
   data() {
     return {}
@@ -51,7 +51,7 @@ export default {
 
   mounted() {},
 
-  methods: {},
+  methods: {}
 }
 </script>
 
