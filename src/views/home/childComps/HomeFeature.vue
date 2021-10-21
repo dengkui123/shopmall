@@ -13,7 +13,7 @@ export default {
 
 <style lang="scss" scoped>
 .home-feature {
-  width: 100%;
+  height: 100%;
   img{
     width: 100%;
   }

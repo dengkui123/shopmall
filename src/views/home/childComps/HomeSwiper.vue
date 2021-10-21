@@ -1,10 +1,10 @@
 <template>
   <swiper :interval="4000" :animDuration="500">
-    <div class="slide" v-for="(item, id) in banners" :key="id">
+    <li class="slide" v-for="(item, id) in banners" :key="id">
       <a :href="item.link">
-        <img :src="item.image" alt="" />
+        <img :src="item.image" alt="" @load="imageLoad"/>
       </a>
-    </div>
+    </li>
   </swiper>
 </template>
 
@@ -21,6 +21,12 @@ export default {
       default() {
         return [];
       }
+    }
+  },
+  methods: {
+    // 轮播图加载完成
+    imageLoad() {
+      this.$emit('swiperImageLoad');
     }
   }
 };

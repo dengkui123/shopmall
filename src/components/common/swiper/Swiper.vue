@@ -1,13 +1,13 @@
 <template>
   <div id="hy-swiper">
-    <div
+    <ul
       class="swiper"
       @touchstart="touchStart"
       @touchmove="touchMove"
       @touchend="touchEnd"
     >
      <slot></slot>
-    </div>
+    </ul>
     <div class="indicator">
       <slot name="indicator" v-if="showIndicator && slideCount > 1">
         <div
@@ -135,6 +135,7 @@ export default {
     handleDom: function () {
       // 1.获取要操作的元素
       const swiperEl = document.querySelector('.swiper');
+      if (!swiperEl) return;
       const slidesEls = swiperEl.getElementsByClassName('slide');
       // 2.保存个数
       this.slideCount = slidesEls.length;
@@ -255,7 +256,7 @@ export default {
   line-height: 25px;
   text-align: center;
   border-radius: 50%;
-  z-index: 999;
+  z-index: 1;
   opacity: 0.4;
   color: #000;
   background-color: #eee;
@@ -273,7 +274,7 @@ export default {
   line-height: 25px;
   text-align: center;
   border-radius: 50%;
-  z-index: 999;
+  z-index: 1;
   color: #000;
   background-color: #eee;
   opacity: 0.4;

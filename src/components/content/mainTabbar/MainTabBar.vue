@@ -1,5 +1,5 @@
 <template>
-  <tab-bar>
+  <tab-bar class="tab-bar">
     <tab-bar-item path="/home" activeColor="skyBlue">
       <template v-slot:item-icon>
         <i class="iconfont icon-home"></i>
@@ -55,4 +55,6 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+
+</style>
