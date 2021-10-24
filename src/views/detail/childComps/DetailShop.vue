@@ -71,6 +71,7 @@ export default {
       padding: 5px;
       margin-right: 5px;
       width: 50px;
+      height: 50px;
       border-radius: 50%;
       border: 1px solid #eee;
       img {

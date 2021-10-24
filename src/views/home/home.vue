@@ -87,7 +87,8 @@ export default {
       isTabFixed: false, // tab是否吸顶
       tabOffsetTop: 0, // tab距离顶部距离
       isFixed: false,
-      position: 0
+      position: 0,
+      homeItemListener: null
     };
   },
   watch: {},
@@ -163,17 +164,21 @@ export default {
   mounted() {
     // 监听item中图片加载完成
     const refresh = debounce(this.$refs.scroll.refresh, 300);
-    this.$bus.$on('itemImageLoad', () => {
-      refresh()
-      // this.$refs.scroll.refresh()
-    })
+    this.homeItemListener = () => {
+      refresh();
+    }
+    this.$bus.$on('itemImageLoad', this.homeItemListener);
+    // this.$refs.scroll.refresh()
   },
   activated() {
     this.$refs.scroll.scrollTo(0, this.position, 1);
     this.$refs.scroll.refresh();
   },
   deactivated() {
+    // 全校全局事件监听
+    this.$bus.$off('itemImageLoad', this.homeItemListener);
   }
+
 };
 </script>
 

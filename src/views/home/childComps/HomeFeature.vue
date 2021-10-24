@@ -13,6 +13,8 @@ export default {
 
 <style lang="scss" scoped>
 .home-feature {
+  position: relative;
+  z-index: 10;
   height: 100%;
   img{
     width: 100%;

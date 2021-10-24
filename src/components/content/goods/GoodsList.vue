@@ -1,11 +1,18 @@
 <template>
   <div class="goods">
-    <goods-list-item  v-for="( item, index ) in goods" :key="index" :goods-item="item"/>
+    <slot></slot>
+    <div class="goods-list">
+      <goods-list-item
+        v-for="(item, index) in goods"
+        :key="index"
+        :goods-item="item"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import GoodsListItem from './GoodsListItem.vue'
+import GoodsListItem from './GoodsListItem.vue';
 
 export default {
   name: 'GoodsList',
@@ -18,17 +25,17 @@ export default {
       default: () => []
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-.goods {
+.goods-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: 100%;
   height: 100%;
-  margin-top:10px;
+  margin-top: 10px;
   // width: 100%;
   // margin: 0px auto; // 剧中
   // padding: 8px;

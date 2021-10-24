@@ -1,10 +1,18 @@
 import request from 'common/request.js'
-
+// 请求详情商品数据
 export function getDetailMsg(params) {
   return request({
     url: 'detail',
     method: 'get',
     params
+  })
+}
+
+// 获取推荐商品列表
+export function getRecommend() {
+  return request({
+    url: '/recommend',
+    method: 'get'
   })
 }
 
@@ -29,5 +37,13 @@ export class Shop {
     this.sells = shopInfo.cSells;
     this.score = shopInfo.score;
     this.goodsCount = shopInfo.cGoods;
+  }
+}
+
+export class GoodsParams {
+  constructor(info, rule) {
+    this.image = info.images?.[0];
+    this.infos = info.set;
+    this.sizes = rule.tables;
   }
 }

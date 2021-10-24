@@ -7,11 +7,12 @@
     <template v-slot:center>
       <ul class="title">
         <li
+        ref="123"
           v-for="(item, index) in titles"
           :key="index"
           class="title-item"
           :class="{ active: currentIndex === index }"
-          @click="currentIndex = index"
+          @click="itemClick(index)"
         >
           {{ item }}
         </li>
@@ -28,15 +29,32 @@ export default {
   components: {
     NavBar
   },
+  props: {
+    activeNavBar: {
+      type: Number,
+      default: 0
+    }
+  },
   data() {
     return {
       titles: ['商品', '参数', '评论', '推荐'],
       currentIndex: 0
     };
   },
+  watch: {
+    activeNavBar(val) {
+      this.currentIndex = val;
+    }
+  },
   methods: {
     backToLastPage() {
       this.$router.back();
+    },
+    itemClick(index) {
+      this.currentIndex = index;
+      const el = 'el' + index;
+      this.$emit('getElem', el);
+      //       console.log(this.$refs[`el${index}`].getBoundingClientRect().top)
     }
   }
 };

@@ -14,7 +14,7 @@
       <div class="info-key">{{ item.key }}</div>
       <ul class="info-list">
         <li v-for="(citem, cindex) in item.list" :key="cindex">
-          <img :src="citem" alt="商品图片" @load="imgLoad" />
+          <img v-lazy="citem" alt="商品图片" @load="imgLoad" />
         </li>
       </ul>
     </div>
