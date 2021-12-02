@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const request = axios.create({
-  baseURL: 'http://152.136.185.210:7878/api/hy66',
+  baseURL: 'http://47.94.151.33:8890/api',
   timeout: 15000
 })
 // 1. 请求拦截器

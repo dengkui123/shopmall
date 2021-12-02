@@ -5,7 +5,14 @@ import routes from './routes'
 Vue.use(VueRouter)
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'hash'
 })
 
+router.beforeEach((to, from, next) => {
+  console.log(to, from);
+  if (to.matched[0].meta.title) {
+    document.title = to.matched[0].meta.title;
+  }
+  next();
+})
 export default router

@@ -1,5 +1,5 @@
 <template>
-  <div class="detail" >
+  <div class="detail">
     <!-- navbar -->
     <detail-nav-bar
       ref="el0"
@@ -56,7 +56,7 @@ import DetailShop from './childComps/DetailShop.vue';
 import DetailInfo from './childComps/DetialGoodsInfo.vue';
 import DetailParams from './childComps/DetailParams.vue';
 import DetailCommentInfo from './childComps/DetailCommentInfo.vue';
-import DetailBottomBar from './childComps/DetailBottomBar.vue'
+import DetailBottomBar from './childComps/DetailBottomBar.vue';
 
 import GoodsList from 'components/content/goods/GoodsList.vue'; // 商品推荐列表
 import BackTop from 'components/content/backTop/BackTop.vue';
@@ -142,7 +142,8 @@ export default {
         if (
           e.touches[0].pageY > this.$refs[el[index]].$el.offsetTop &&
           (index === el.length - 1 ||
-            e.touches[0].pageY < this.$refs[el[index + 1]].$el.offsetTop) && this.activeNavBar !== index
+            e.touches[0].pageY < this.$refs[el[index + 1]].$el.offsetTop) &&
+          this.activeNavBar !== index
         ) {
           this.activeNavBar = index;
         }
@@ -194,8 +195,7 @@ export default {
       this.showTitle();
     });
   },
-  mounted() {
-  }
+  mounted() {}
 };
 </script>
 
