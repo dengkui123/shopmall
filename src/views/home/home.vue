@@ -175,7 +175,7 @@ export default {
     this.$refs.scroll.refresh();
   },
   deactivated() {
-    // 全校全局事件监听
+    // 全局事件监听
     this.$bus.$off('itemImageLoad', this.homeItemListener);
   }
 

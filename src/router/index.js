@@ -9,7 +9,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to, from);
   if (to.matched[0].meta.title) {
     document.title = to.matched[0].meta.title;
   }
